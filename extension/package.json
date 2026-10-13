@@ -1,0 +1,17 @@
+{
+  "name": "spotify-companion",
+  "version": "1.0.0",
+  "description": "Premium music companion Chrome Extension for Spotify Web Player",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run-tests.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "spotify",
+    "music-controller",
+    "manifest-v3"
+  ],
+  "author": "Spotify Companion Developer",
+  "license": "MIT"
+}

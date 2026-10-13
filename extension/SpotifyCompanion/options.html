@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Companion - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body class="theme-dark">
+  <div class="options-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="options-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon-wrapper">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#1DB954" stroke-width="2"/>
+            <path d="M8 14V10M12 16V8M16 13V11" stroke="#1ed760" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">Spotify Companion</h1>
+          <span class="brand-version">Extension Preferences</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#section-dashboard" class="nav-item active">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Dashboard Widgets
+        </a>
+        <a href="#section-appearance" class="nav-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+          </svg>
+          Appearance
+        </a>
+        <a href="#section-shortcuts" class="nav-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01"></path>
+          </svg>
+          Keyboard Shortcuts
+        </a>
+        <a href="#section-general" class="nav-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          General & Performance
+        </a>
+        <a href="#section-backup" class="nav-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Backup & Reset
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p class="privacy-note">All data stored locally on your device. Zero cloud analytics.</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="options-main">
+      <div id="toastNotification" class="toast-notification hidden" role="alert">
+        <span id="toastMessage"></span>
+      </div>
+
+      <!-- Section: Dashboard Widgets -->
+      <section id="section-dashboard" class="settings-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Dashboard Widgets</h2>
+            <p class="section-desc">Reorder, enable, or disable widgets appearing in the extension popup.</p>
+          </div>
+          <button id="btnResetWidgets" class="btn btn-secondary btn-sm">Reset Layout</button>
+        </div>
+
+        <div id="widgetsList" class="widgets-manager-list">
+          <!-- Dynamically populated widget items with up/down arrows and toggles -->
+        </div>
+      </section>
+
+      <!-- Section: Appearance -->
+      <section id="section-appearance" class="settings-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Appearance & Theme</h2>
+            <p class="section-desc">Customize interface theme and spacing.</p>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="setting-row">
+            <div>
+              <label for="selectTheme" class="setting-label">Interface Theme</label>
+              <div class="setting-help">Select the dark color palette for popup and settings.</div>
+            </div>
+            <select id="selectTheme" class="form-select">
+              <option value="dark">Charcoal Dark (Default)</option>
+              <option value="amoled">Deep AMOLED (True Black)</option>
+              <option value="charcoal">Slate Charcoal</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label for="toggleCompact" class="setting-label">Compact Mode</label>
+              <div class="setting-help">Reduces popup width and spacing for dense displays.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleCompact">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label for="toggleGlow" class="setting-label">Emerald Glow Effects</label>
+              <div class="setting-help">Adds subtle green glow to buttons and playback progress.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleGlow" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Keyboard Shortcuts -->
+      <section id="section-shortcuts" class="settings-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Keyboard Shortcuts</h2>
+            <p class="section-desc">Control playback from any browser tab without opening the extension.</p>
+          </div>
+          <button id="btnOpenChromeShortcuts" class="btn btn-primary btn-sm">Change in Chrome</button>
+        </div>
+
+        <div class="settings-card">
+          <div id="shortcutsTable" class="shortcuts-grid">
+            <!-- Dynamically populated shortcuts -->
+          </div>
+          <div class="info-callout">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Keyboard shortcuts are managed by Chrome. Click <strong>Change in Chrome</strong> to customize or assign global system hotkeys.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: General & Performance -->
+      <section id="section-general" class="settings-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">General & Performance</h2>
+            <p class="section-desc">Fine-tune polling intervals and background resource usage.</p>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="setting-row">
+            <div>
+              <label for="pollIntervalInput" class="setting-label">Status Refresh Rate</label>
+              <div class="setting-help">How frequently the popup syncs playback (1000ms - 5000ms). Only active when popup is open.</div>
+            </div>
+            <div class="input-with-unit">
+              <input type="number" id="pollIntervalInput" class="form-input" min="500" max="10000" step="250" value="1500" />
+              <span class="unit-label">ms</span>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label for="toggleSessionStats" class="setting-label">Track Listening Statistics</label>
+              <div class="setting-help">Count tracks played and active session listening time locally.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleSessionStats" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Backup & Reset -->
+      <section id="section-backup" class="settings-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Backup & Factory Reset</h2>
+            <p class="section-desc">Export configuration or restore default settings.</p>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="setting-row">
+            <div>
+              <span class="setting-label">Export Configuration</span>
+              <div class="setting-help">Download your widget order and settings as a JSON file.</div>
+            </div>
+            <button id="btnExportSettings" class="btn btn-secondary btn-sm">Export JSON</button>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <span class="setting-label">Import Configuration</span>
+              <div class="setting-help">Restore settings from a valid JSON backup file.</div>
+            </div>
+            <div>
+              <input type="file" id="fileImportSettings" accept=".json" class="hidden" />
+              <button id="btnTriggerImport" class="btn btn-secondary btn-sm">Import JSON</button>
+            </div>
+          </div>
+
+          <div class="setting-row danger-row">
+            <div>
+              <span class="setting-label text-danger">Factory Reset</span>
+              <div class="setting-help">Reverts all settings, widget layouts, and notes back to initial defaults.</div>
+            </div>
+            <button id="btnResetAll" class="btn btn-danger btn-sm">Reset All Settings</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Disclaimer -->
+      <footer class="options-footer">
+        <p><strong>Disclaimer:</strong> Spotify Companion is an independent open-source tool and is not affiliated with, endorsed by, or associated with Spotify AB. All trademarks belong to their respective owners. Ad-skipping and subscription circumvention are strictly not supported.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
